@@ -174,13 +174,15 @@ coco2017_dataset_only_humans_kaggle = dataset_base.copy({
     'label_map': COCO_LABEL_MAP
 })
 
+
+
 coco2017_dataset_only_humans_collab = dataset_base.copy({
     'name': 'COCO 2017 only_humans collab',
 
-    'train_images': './data/coco/images/',
+    'train_images': '/content/drive/MyDrive/COCO/2017/train2017/',
     'train_info': '/content/filtered_instances_train2017.json',
 
-    'valid_images': './data/coco/images/',
+    'valid_images': '/content/drive/MyDrive/COCO/2017/val2017/',
     'valid_info': '/content/filtered_instances_val2017.json',
 
     'label_map': COCO_LABEL_MAP
