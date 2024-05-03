@@ -54,9 +54,9 @@ def filter_annotations(json_data):
     return json_data
 
 def process_json_file(filename):
-    if filename.endswith(".json") and filename.startswith("instances"):
+    # if filename.endswith(".json") and filename.startswith("instances"):
         input_file = filename
-        output_file = f"filtered_{filename}"
+        output_file = f"{filename[:-5]}_filtered.json"
         
         with open(input_file, "r") as file:
             json_data = json.load(file)
@@ -65,8 +65,8 @@ def process_json_file(filename):
         with open(output_file, "w") as file:
             json.dump(filtered_data, file, indent=4)
         print(f"Processed {filename} and saved as {output_file}")
-    else:
-        print("Invalid file format. File should start with 'instances' and end with '.json'.")
+    # else:
+    #     print("Invalid file format. File should start with 'instances' and end with '.json'.")
 
 def main():
     parser = argparse.ArgumentParser(description="Process JSON file with annotations")
