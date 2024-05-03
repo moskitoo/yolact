@@ -133,7 +133,10 @@ dataset_base = Config({
 coco2014_dataset_only_humans = dataset_base.copy({
     'name': 'COCO 2014 only humans',
 
+    'train_images': './data/coco/images/',
     'train_info': './data/coco/annotations/filtered_instances_train2014.json',
+
+    'valid_images': './data/coco/images/',
     'valid_info': './data/coco/annotations/filtered_instances_val2014.json',
 
     'label_map': COCO_LABEL_MAP
@@ -142,6 +145,7 @@ coco2014_dataset_only_humans = dataset_base.copy({
 coco2014_dataset = dataset_base.copy({
     'name': 'COCO 2014',
 
+    'train_images': './data/coco/images/',
     'train_info': './data/coco/annotations/instances_train2014.json',
     'valid_info': './data/coco/annotations/instances_val2014.json',
 
@@ -151,6 +155,7 @@ coco2014_dataset = dataset_base.copy({
 coco2017_dataset_only_humans = dataset_base.copy({
     'name': 'COCO 2017 only_humans',
 
+    'train_images': './data/coco/images/',
     'train_info': './data/coco/annotations/filtered_instances_train2017.json',
     'valid_info': './data/coco/annotations/filtered_instances_val2017.json',
 
@@ -160,7 +165,10 @@ coco2017_dataset_only_humans = dataset_base.copy({
 coco2017_dataset_only_humans_kaggle = dataset_base.copy({
     'name': 'COCO 2017 only_humans kaggle',
 
+    'train_images': './data/coco/images/',
     'train_info': '/kaggle/working/annotations/filtered_instances_val2017.json',
+
+    'valid_images': './data/coco/images/',
     'valid_info': '/kaggle/working/annotations/filtered_instances_train2017.json',
 
     'label_map': COCO_LABEL_MAP
@@ -169,10 +177,10 @@ coco2017_dataset_only_humans_kaggle = dataset_base.copy({
 coco2017_dataset_only_humans_collab = dataset_base.copy({
     'name': 'COCO 2017 only_humans collab',
 
-    # 'train_info': './data/coco/annotations/filtered_instances_train2017.json',
-    # 'valid_info': './data/coco/annotations/filtered_instances_val2017.json',
-
+    'train_images': './data/coco/images/',
     'train_info': '/content/filtered_instances_train2017.json',
+
+    'valid_images': './data/coco/images/',
     'valid_info': '/content/filtered_instances_val2017.json',
 
     'label_map': COCO_LABEL_MAP
