@@ -188,6 +188,18 @@ coco2017_dataset_only_humans_collab = dataset_base.copy({
     'label_map': COCO_LABEL_MAP
 })
 
+coco2017_minitrain_dataset_only_humans_collab = dataset_base.copy({
+    'name': 'COCO 2017 minitrain only_humans collab',
+
+    'train_images': '/content/drive/MyDrive/2017/train2017/',
+    'train_info': '/content/drive/MyDrive/coco_minitrain/annotations/human_instances_minitrain2017.json',
+
+    'valid_images': '/content/drive/MyDrive/2017/val2017/',
+    'valid_info': '/content/drive/MyDrive/coco_minitrain/annotations/human_instances_val2017.json',
+
+    'label_map': COCO_LABEL_MAP
+})
+
 coco2017_dataset = dataset_base.copy({
     'name': 'COCO 2017',
 
@@ -893,6 +905,27 @@ yolact_resnet50_only_human_im512_collab_config = yolact_resnet50_config.copy({
 
     'max_iter': 300000,
     'lr_steps': (60000, 100000, 250000),
+
+    'backbone': yolact_resnet50_config.backbone.copy({
+        'pred_scales': [[32], [64], [128], [256], [512]],
+        'use_square_anchors': False,
+    })
+})
+
+yolact_resnet50_only_human_minitrain_im512_collab_config = yolact_resnet50_config.copy({
+    'name': None,  # Will default to yolact_resnet50_pascal
+
+    'batch_size': 16,
+
+    # Image Size
+    'max_size': 512,
+
+    # Dataset stuff
+    'dataset': coco2017_minitrain_dataset_only_humans_collab,
+    'num_classes': 2,
+
+    'max_iter': 150000,
+    'lr_steps': (30000, 80000, 120000),
 
     'backbone': yolact_resnet50_config.backbone.copy({
         'pred_scales': [[32], [64], [128], [256], [512]],
