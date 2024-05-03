@@ -151,11 +151,29 @@ coco2014_dataset = dataset_base.copy({
 coco2017_dataset_only_humans = dataset_base.copy({
     'name': 'COCO 2017 only_humans',
 
-    # 'train_info': './data/coco/annotations/filtered_instances_train2017.json',
-    # 'valid_info': './data/coco/annotations/filtered_instances_val2017.json',
+    'train_info': './data/coco/annotations/filtered_instances_train2017.json',
+    'valid_info': './data/coco/annotations/filtered_instances_val2017.json',
+
+    'label_map': COCO_LABEL_MAP
+})
+
+coco2017_dataset_only_humans_kaggle = dataset_base.copy({
+    'name': 'COCO 2017 only_humans kaggle',
 
     'train_info': '/kaggle/working/annotations/filtered_instances_val2017.json',
     'valid_info': '/kaggle/working/annotations/filtered_instances_train2017.json',
+
+    'label_map': COCO_LABEL_MAP
+})
+
+coco2017_dataset_only_humans_collab = dataset_base.copy({
+    'name': 'COCO 2017 only_humans collab',
+
+    # 'train_info': './data/coco/annotations/filtered_instances_train2017.json',
+    # 'valid_info': './data/coco/annotations/filtered_instances_val2017.json',
+
+    'train_info': '/content/filtered_instances_train2017.json',
+    'valid_info': '/content/filtered_instances_val2017.json',
 
     'label_map': COCO_LABEL_MAP
 })
@@ -819,6 +837,48 @@ yolact_resnet50_only_human_im512_config = yolact_resnet50_config.copy({
 
     # Dataset stuff
     'dataset': coco2017_dataset_only_humans,
+    'num_classes': 2,
+
+    'max_iter': 300000,
+    'lr_steps': (60000, 100000, 250000),
+
+    'backbone': yolact_resnet50_config.backbone.copy({
+        'pred_scales': [[32], [64], [128], [256], [512]],
+        'use_square_anchors': False,
+    })
+})
+
+yolact_resnet50_only_human_im512_kaggle_config = yolact_resnet50_config.copy({
+    'name': None,  # Will default to yolact_resnet50_pascal
+
+    'batch_size': 16,
+
+    # Image Size
+    'max_size': 512,
+
+    # Dataset stuff
+    'dataset': coco2017_dataset_only_humans_kaggle,
+    'num_classes': 2,
+
+    'max_iter': 300000,
+    'lr_steps': (60000, 100000, 250000),
+
+    'backbone': yolact_resnet50_config.backbone.copy({
+        'pred_scales': [[32], [64], [128], [256], [512]],
+        'use_square_anchors': False,
+    })
+})
+
+yolact_resnet50_only_human_im512_collab_config = yolact_resnet50_config.copy({
+    'name': None,  # Will default to yolact_resnet50_pascal
+
+    'batch_size': 16,
+
+    # Image Size
+    'max_size': 512,
+
+    # Dataset stuff
+    'dataset': coco2017_dataset_only_humans_collab,
     'num_classes': 2,
 
     'max_iter': 300000,
